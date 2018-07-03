@@ -108,12 +108,12 @@ public class IslandShape
 		modulePerl.setNoiseQuality(NoiseQuality.BEST);
 
 		ScaleBias sb = new ScaleBias();
-		sb.setSourceModule(0, modulePerl);
+		sb.SetSourceModule(0, modulePerl);
 		sb.setBias(0.0);
 		sb.setScale(1.4);
 
 		Clamp moduleClamp = new Clamp();
-		moduleClamp.setSourceModule(0, sb);
+		moduleClamp.SetSourceModule(0, sb);
 		moduleClamp.setLowerBound(-2);
 		moduleClamp.setUpperBound(2);
 
@@ -131,20 +131,20 @@ public class IslandShape
 		const0.setValue(0);
 
 		Invert inv = new Invert();
-		inv.setSourceModule(0, rm);
+		inv.SetSourceModule(0, rm);
 
 		Min min = new Min();
-		min.setSourceModule(0, const0);
-		min.setSourceModule(1, inv);
+		min.SetSourceModule(0, const0);
+		min.SetSourceModule(1, inv);
 
 		Add add = new Add();
-		add.setSourceModule(0, shapeModule);
-		add.setSourceModule(1, inv);
+		add.SetSourceModule(0, shapeModule);
+		add.SetSourceModule(1, inv);
 
 		Select s0 = new Select();
 		s0.setBounds(0, 2);
-		s0.setSourceModule(0, shapeModule);
-		s0.setSourceModule(1, min);
+		s0.SetSourceModule(0, shapeModule);
+		s0.SetSourceModule(1, min);
 		s0.setControlModule(rm);
 		s0.setEdgeFalloff(1);
 
